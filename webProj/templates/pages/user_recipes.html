@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/user_recipes.css' %}">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tourney:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body>
+   
+    <div class="recIntro">
+      <h2>Recipe</h2>
+    </div>
+    <div class="filters">
+      <input
+        type="Search Receipies"
+        id="search"
+        placeholder="Search Receipies"
+      />
+      <button id="searchBtn">Search</button>
+    </div>
+    <div class="latestTitle">
+      <div class="overline"></div>
+      <h2>All Recipes</h2>
+    </div>
+    <div class="recipeGrid">
+      <h3 class="emptyRcps">There is nothing to show at the moment</h3>
+    </div>
+    <div class="photos-container" id="photos-container">
+      <div>
+        <img
+          class="photos-inside-container"
+          src="../images/footer1.jpg"
+          alt=""
+        />
+        <img
+          class="photos-inside-container"
+          src="../images/footer2.jpg"
+          alt=""
+        />
+        <img
+          class="photos-inside-container"
+          src="../images/footer3.jpg"
+          alt=""
+        />
+
+        <img
+          class="photos-inside-container"
+          src="../images/footer4.jpg"
+          alt=""
+        />
+        <img
+          class="photos-inside-container"
+          src="../images/footer5.jpg"
+          alt=""
+        />
+        <img
+          class="photos-inside-container"
+          src="../images/footer6.jpg"
+          alt=""
+        />
+
+        <img
+          class="photos-inside-container"
+          src="../images/footer7.webp"
+          alt=""
+        />
+        <img
+          class="photos-inside-container"
+          src="../images/footer8.webp"
+          alt=""
+        />
+        <img
+          class="photos-inside-container"
+          src="../images/footer9.jpg"
+          alt=""
+        />
+
+        <img
+          class="photos-inside-container"
+          src="../images/footer10.webp"
+          alt=""
+        />
+        <img
+          class="photos-inside-container"
+          src="../images/footer11.jpg"
+          alt=""
+        />
+        <img
+          class="photos-inside-container"
+          src="../images/footer12.jpg"
+          alt=""
+        />
+
+        <img
+          class="photos-inside-container"
+          src="../images/footer13.jpg"
+          alt=""
+        />
+        <img
+          class="photos-inside-container"
+          src="../images/footer14.jpg"
+          alt=""
+        />
+        <img
+          class="photos-inside-container"
+          src="../images/footer15.jpg"
+          alt=""
+        />
+      </div>
+    </div>
+    
+    <script>
+      let username = document.querySelector(".displayName p");
+      username.innerHTML = localStorage.getItem("username");
+
+      let logout = document.querySelector(".displayName img");
+      logout.addEventListener("click", () => {
+        localStorage.removeItem("username");
+        localStorage.removeItem("isAdmin");
+        location.href = "/html/index.html";
+      });
+
+      let favList = document.querySelector(".fav");
+      let rcpLink = document.querySelector(".rcpLink");
+      if (localStorage.getItem("isAdmin") == "true") {
+        favList.style.display = "none";
+        rcpLink.addEventListener(
+          "click",
+          () => (location.href = "adminrecipes.html")
+        );
+      } else if (localStorage.getItem("isAdmin") == "false") {
+        rcpLink.addEventListener(
+          "click",
+          () => (location.href = "user_recipes.html")
+        );
+      }
+      let photosContainer = document.getElementById("photos-container");
+
+      photosContainer.addEventListener("wheel", (amountOfScrolling) => {
+        amountOfScrolling.preventDefault();
+        photosContainer.scrollLeft -= amountOfScrolling.deltaY;
+      });
+    </script>
+    <script src="../javascript/user_recipe.js"></script>
+  </body>
+</html>
+{% endblock %}

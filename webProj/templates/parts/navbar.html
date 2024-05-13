@@ -1,0 +1,43 @@
+{% block content  %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+</div>
+<nav class="navbar">
+    <nav class="nav1">
+        <div class="social-media-icons-nav">
+            <i class="fi fi-brands-instagram"></i>
+            <i class="fi fi-brands-facebook"></i>
+            <i class="fi fi-brands-youtube"></i>
+            <i class="fi fi-brands-twitter"></i>
+        </div>
+        <div class="displayName">
+            <p></p>
+            {% load static %}
+            <img src="{% static "images/login-icon.png" %}" alt="" />
+        </div>
+    </nav>
+      <nav class="nav2">
+        <div class="logo-navbar">LOGO</div>
+        <div class="links-navbar">
+            <a class="navbar-link" href="{% url "Home" %}">Home</a>
+            <a class="navbar-link" href="{% url "features" %}">Features</a>
+            <a class="navbar-link rcpLink" href="{% url "user_recipes" %}">Receipies</a>
+            <div class="fav">
+                <a class="navbar-link" href="">Favorites</a>
+                <ul>
+                    <li>
+                        pizza<i class="fa fa-trash-o" style="font-size: 12px"></i>
+                    </li>
+                    <li>
+                        pizza<i class="fa fa-trash-o" style="font-size: 12px"></i>
+                    </li>
+                    <li>
+                        pizza<i class="fa fa-trash-o" style="font-size: 12px"></i>
+                    </li>
+                </ul>
+            </div>
+            <a class="navbar-link" href="{% url "Contact" %}">Contact</a>
+        </div>
+    </nav>
+</nav>
+{% endblock  %}
